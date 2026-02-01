@@ -1,1 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meus Links Shopee</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
+      color: #333;
+    }
 
+    header {
+      background: #ff5722;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .link-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .card a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      color: #ff5722;
+      font-weight: bold;
+    }
+
+    .form-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background: #ff5722;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e64a19;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #ddd;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Meus Links da Shopee</h1>
+  </header>
+
+  <main>
+    <div class="link-container" id="linkContainer">
+      <!-- Cards com imagem e link serão adicionados aqui -->
+    </div>
+
+    <div class="form-container">
+      <input type="text" id="linkInput" placeholder="Cole o link da Shopee aqui">
+      <input type="text" id="imgInput" placeholder="Cole o link da imagem do produto">
+      <button onclick="addLink()">Adicionar Produto</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>Site simples para organizar links da Shopee com imagens</p>
+  </footer>
+
+  <script>
+    function addLink() {
+      const linkInput = document.getElementById("linkInput");
+      const imgInput = document.getElementById("imgInput");
+      const linkContainer = document.getElementById("linkContainer");
+
+      const url = linkInput.value.trim();
+      const imgUrl = imgInput.value.trim();
+
+      if (url && imgUrl) {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const img = document.createElement("img");
+        img.src = imgUrl;
+        img.alt = "Imagem do produto Shopee";
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.target = "_blank";
+        a.textContent = "Ver produto na Shopee";
+
+        card.appendChild(img);
+        card.appendChild(a);
+        linkContainer.appendChild(card);
+
+        linkInput.value = "";
+        imgInput.value = "";
+      } else {
+        alert("Por favor, insira o link da
